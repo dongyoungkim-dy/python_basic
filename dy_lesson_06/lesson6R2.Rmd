@@ -1,0 +1,15 @@
+---
+title: "Untitled"
+author: "Dongyoung Kim"
+date: "2024-02-06"
+output: html_document
+---
+```{r}
+my_vector <- c(11, 22, 33, 74, 15)
+new_vector <- numeric()
+# for (i in 1:length(my_vector)) {
+for (i in seq(length(my_vector), 1, -1)) {
+  new_vector[i] <- my_vector[length(my_vector) - i +1]
+}
+new_vector
+```
