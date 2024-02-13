@@ -1,0 +1,43 @@
+---
+title: "Untitled"
+author: "Dongyoung Kim"
+date: "2024-01-09"
+output: pdf_document
+---
+```{r}
+a = c(1.23, 2, 3)
+b = c("a", "b", "c")
+ c = c(1, "2", 3)
+c(str(a),str(b), str(c)) 
+data.frame("age" = a,"name" =b, "age2" = c)
+
+```
+
+```{r}
+my_list <- list("age" = a, "name" = b, "age2" = c)
+my_list
+my_data_frame <- as.data.frame(my_list)
+my_data_frame
+```
+```{r}
+# Create a matrix
+my_matrix <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow = 3, ncol = 3)
+my_matrix
+# Coerce the matrix into a data frame
+my_data_frame <- as.data.frame(my_matrix)
+
+# Display the data frame
+print(my_data_frame)
+
+```
+
+```{r}
+a = matrix(c(1, 2, 3), ncol = 3, nrow = 1)
+b = matrix(c(2, 3, 4), ncol = 1, nrow = 3)
+a %*% b
+```
+
+```{r}
+vector1 = c("")
+as.data.frame()
+```

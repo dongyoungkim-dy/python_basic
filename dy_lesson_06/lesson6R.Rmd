@@ -1,0 +1,53 @@
+---
+title: "Untitled"
+author: "Dongyoung Kim"
+date: "2024-02-06"
+output: html_document
+---
+```{r}
+# Define a pure function to square a number
+square <- function(x) {
+  x * x
+}
+
+orig_numbers <- c(1, 2, 3, 4, 5)
+# Use the higher-order function 'lapply' to apply 'square' to each element of a vector
+
+squared_numbers <- sapply(orig_numbers, square)
+squared_numbers_l <- lapply(orig_numbers, square)
+
+# print(squared_numbers)
+# print(squared_numbers_l)
+print("Structure of sapply:")
+str(squared_numbers)
+
+# Display the structure of squared_numbers_l
+print("Structure of lapply:")
+str(squared_numbers_l)
+```
+```{r}
+a <- function(a, b) {
+  if (b ==0) {
+    print("b must not be 0")
+  }
+  (a+b)/b
+}
+# Use the 'Reduce' function to sum the squared numbers, another example of a higher-order function
+sum_of_squares <- Reduce('+', squared_numbers)
+function_of_squares <- Reduce(a, squared_numbers)
+
+sum(squared_numbers)
+# Print the result
+print(sum_of_squares)
+print(function_of_squares)
+```
+```{r}
+my_vector <- c(1, 2, 3, 4, 5)
+my_vector_sapply <- sapply(my_vector, function(x){x^2})
+my_vector_sapply
+str(my_vector_sapply)
+```
+
+```{r}
+my_vector[my_vector>3]
+```
