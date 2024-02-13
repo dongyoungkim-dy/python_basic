@@ -1,0 +1,158 @@
+****************************************************
+January 2023
+
+New Writemonkey v3.3.0 is ready.
+
+Downloads and info
+
+****************************************************
+ 
+
+ 
+
+WRITEMONKEY 2.7 FOR WINDOWS
+===========================
+
+ 
+
+Writemonkey is a Windows zenware* writing application with an extremely stripped down user interface, leaving you alone with your thoughts and your words. It is light, fast and free. With an array of innovative tools under the hood and full Markdown* support, it helps you write better.
+
+Screenshot 1, Screenshot 2, Screenshot 3, Screenshot 4, Logo/icon
+
+ 
+
+DOWNLOAD WRITEMONKEY
+version 2.7
+
+
+This version features new language tools and can run even more cool plugins. Plugins are locked and will only work with a writemonkey donor key.
+ 
+
+SUPPORT WRITEMONKEY
+via PayPal* >
+
+Donate via this link if you are donating for version 2. For version 3 go here!
+
+* You can donate with your PayPal account OR with your credit card. You don't need a PayPal account to donate, a credit card (Visa, MasterCard, American Express or Discover) will do. All old keys are valid. Along with premium features, you are also supporting an independent software developer and future updates.
+
+Donors will receive a key (via e-mail) which will enable personalized name tag in splash screen (WRITER: YOUR NAME HERE) and access to many plugins that are available as separate download.
+Make sure that your Paypal email address is valid or provide different one!
+
+ 
+
+Easy jumps
+
+Easy jumps for wm
+
+Corkboards for wm
+
+Corkboards for wm
+
+Clandestine files
+
+Clandestine files for wm **NEW**
+Requires wm 2.7 or higher!
+
+ 	 	 
+Scratch pad
+
+Scratch pad for wm **NEW**
+Requires wm 2.7 or higher!
+
+Quick search for wm
+
+Quick search for wm
+
+Pomodoro timer for wm
+
+Pomodoro timer for wm
+
+ 	 	 
+Sentence highlighter
+
+Sentence highlighter for wm
+
+Big Huge Thesaurus
+
+Big Huge Thesaurus for wm
+Preview for wm
+
+Preview for wm **NEW**
+Requires wm 2.7.0.2 or higher!
+
+
+All plugins
+
+ 
+
+USERS SAID
+==========
+
+"... WriteMonkey actually has rather a lot of features but they are all ones that I really like or need. In fact, WriteMonkey has almost every feature from Scrivener that I require and that from me is high praise indeed ..."
+
+Bill King, SF and Fantasy writer
+
+---
+
+"... I use WriteMonkey to get a distraction-free draft out of me, since it doesn’t even tell me if I have misspelled something. I have also set it to make a clicking sound as I type, so I have come to associate that sound with productivity and type faster ..."
+
+Thomm Quackenbush, Fantasy writer
+
+ 
+
+"... We've used WriteMonkey for years now, and its minimalist look actually helps reduce distractions, though the draggable minimized window might be better suited for everyday use like note-taking. For us, its intuitive features and Zen-like purity keeps WriteMonkey always on top."
+
+Dan Russell, Download.com (c|net) >
+
+---
+
+Maybe the best distraction-free, full-screen, "zen" text editor you'll find for free, WriteMonkey has lots of nice bells for the serious writer. This includes an infobar you can customize to show document info, or just hit a key to get all the stats on your work. You can set a constant position for your work cursor, so you never hit the bottom of the page.
+
+Eric Griffith, PCMAG.COM, The Best Free Software of 2011 >
+
+---
+
+"... A further extreme, applicable to writers: use a word processor that's built exclusively around that kind of streamlined typewriter interface. My favorite such Windows app is WriteMonkey. For MacOS, it's WriteRoom, from Hog Bay Software ..."
+Andy Ihnatko, The Chicago Sun-Times’ tech columnist >
+
+---
+
+"... of all the Windows apps I used wm has the most personality ..."
+
+David Sparks from macpowerusers.com
+Excerpt from podcast MPU episode 028 (mp3, 46 sec) >
+
+---
+
+With every new version conventional word processors like Microsoft Word gain more and more features, bells and jingles nearly nobody will ever need, while disregarding the needs of creative writers. When I am writing, all there has to be is me, a blank screen, my words and the current wordcount. No fancy toolbars, colorful buttons, floating windows or other useless distractions from the things that really count.
+
+WriteMonkey closes the gap between simple editors like DarkRoom and full fledged word processors. It is fully customizable to meet the needs of any writer while maintaining a simple, clear user interface. WriteMonkey is my first choice for writing novels and can be absolutely recommended.
+
+Richard Norden, Writer
+http://www.WritersWorkshop.de >
+
+---
+Quit aping around and eliminate distractions that keep you from writing with WriteMonkey, which brings the focus of the typewriter without losing some of the best tools from computers.
+
+Seth Rosenblatt
+Editor of Download.com >
+
+---
+
+... The application is deceptively simple. The preferences reveal a huge amount of features such as text replacement shortcuts web look-ups of selected text, scratch repository and dynamic Markdown shortcuts. This application is a phenomenal implementation of a simple Markdown editor ...
+
+macdrifter.com >
+
+More testimonials
+
+
+Discussion group >
+
+Write to master@pomarancha.com >
+
+Follow writemonkey on Twitter >
+
+Join a group on Facebook >
+
+
+pomarancha_ 2007-2023

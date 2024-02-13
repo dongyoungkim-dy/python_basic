@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://joeilagan.com/article/2024-itm-web-apps-2 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./file9_files/base.css">
+    <link rel="stylesheet" href="./file9_files/css">
+    
+    
+    <title>A brief primer on web apps for ITM students (part 2)</title>
+<script charset="utf-8" src="chrome-extension://donbcfbmhbcapadipfkeojnmajbakjdc/dist/ruffle.js?id=60997739112"></script></head>
+<body data-new-gr-c-s-check-loaded="14.1154.0" data-gr-ext-installed="">
+    <div id="content-wrapper">
+        <main>
+            <div class="nav">
+                <a href="https://joeilagan.com/">Home page</a>
+                <a href="https://joeilagan.com/portfolio">Portfolio</a>
+            </div>
+            <h1>A brief primer on web apps for ITM students (part 2)</h1>
+<p>2024-02-02</p>
+<p>This is the sequel to <a href="https://joeilagan.com/article/2024-itm-web-apps-1">this other article</a>. My goal in this one is to discuss routing and controllers.</p>
+<h2>Hypertext</h2>
+<p>Before we discuss routing, we should discuss hypertext, which is what gets sent over the network when you talk to a web server. I dislike starting with a definition, but in this case, it's important:</p>
+<blockquote>
+<p>Hypertext is text displayed on a computer display or other electronic devices with references (hyperlinks) to other text that the reader can immediately access. - <a href="https://en.wikipedia.org/wiki/Hypertext">Wikipedia</a></p>
+</blockquote>
+<p>It's just text. Within this text, we once again we come across the concepts of content and links. We've seen this already.</p>
+<p>You can find two concepts immediately adjacent to hypertext. First, Hypertext Markup Language (HTML). This is the format of the text itself. HTML uses tags to instruct browsers how to render the text contained within said tags. For example:</p>
+<h6>Headers like this</h6>
+<p>are rendered differently from paragraphs like this. If you open your browser's developer tools, you will be able to see the header enclosed in <code>&lt;h6&gt;&lt;/h6&gt;</code> tags and the paragraph enclosed in <code>&lt;p&gt;&lt;/p&gt;</code> tags. The HTML itself is just text. It's the browser that renders the text in different ways depending on what tags enclose the text.</p>
+<p>Second, Hypertext Transfer Protocol (HTTP). This is the format used to send hypertext to web programs.</p>
+<p>There is a program called <code>curl</code> that Mac and Linux computers can use to send HTTP requests to web servers. We'll use it to explore how HTTP works. As a simple example, let's ask Amazon what my current IP is.</p>
+<p>I can issue an HTTP request with <code>curl -v https://checkip.amazonaws.com</code>. The <code>-v</code> option tells <code>curl</code> to print the details of the HTTP request and the HTTP response when it arrives.</p>
+<p>This is the HTTP request that <code>curl</code> sends to Amazon.</p>
+<pre><code>GET / HTTP/1.1
+Host: checkip.amazonaws.com
+User-Agent: curl/7.79.1
+Accept: */*
+</code></pre>
+<p>It's text. The thing that makes this work is that this text follows certain rules -- for example, that the top line must contain the HTTP method (GET), the path (/), and the HTTP specification (HTTP/1.1). The lines that follow are called HTTP headers: key-value pairs that give additional information to the server. A server knows to expect this format from an HTTP client.</p>
+<p>This is the HTTP response that Amazon sends us.</p>
+<pre><code>HTTP/1.1 200 OK
+Date: Fri, 02 Feb 2024 14:07:11 GMT
+Server: Not Available
+Content-Length: 16
+Connection: keep-alive
+
+X.X.X.X
+</code></pre>
+<p>It's text again. The top line here, the response line, is similar (though not the same) to the request line. Instead of the method/path/specification, we instead have the specification/status code/reason phrase. Responses also include headers.</p>
+<p>Responses will also typically include a "response body" separated from the headers by a blank line. In this example, the response body is my IP (which I have redacted). In most cases, the response body will be HTML.</p>
+<p>Note that this is the barest example of HTTP. It can get far more complicated than this, especially when forms and files are involved.</p>
+<p>Thankfully, in practice, you will never construct HTTP requests manually, and you will never parse HTTP responses manually. Even the simplest frameworks will give you more pleasant ways of working with requests and responses.</p>
+<h2>Routing</h2>
+<p>Let's pretend, once again, that you are building a website for a cafe at https://example.com, and let's pretend that you have three web pages:</p>
+<ul>
+<li>Home, at https://example.com/.</li>
+<li>About, at https://example.com/about.</li>
+<li>Branches, at https://example.com/branches.</li>
+</ul>
+<p>Take a closer look at the top line (the "request line") of an HTTP request.</p>
+<pre><code>GET / HTTP/1.1
+</code></pre>
+<p>The second element here, the path, will change depending on what specific page you want to visit. When a user visits https://example.com/about, the request line will change to this:</p>
+<pre><code>GET /about HTTP/1.1
+</code></pre>
+<p>You can use the different values of the path to tell your web program to do different things. In English:</p>
+<ul>
+<li>If the user visits the path /, render my home page.</li>
+<li>If the user visits the path /about, render my about page.</li>
+<li>If the user visits the path /branches, render my branches page.</li>
+</ul>
+<p>In pseudocode:</p>
+<pre><code>if request.path == '/':
+    render('home.html')
+else if request.path == '/about':
+    render('about.html')
+else if request.path == '/branches':
+    render('branches.html')
+</code></pre>
+<p>This is a form of <a href="https://en.wikipedia.org/wiki/Dynamic_dispatch">dynamic dispatch</a>. Different code will run depending on the value of the path variable.</p>
+<p>In practice, you will usually attach functions called "handlers" to different paths. In Flask, the Python web microframework, it looks like this:</p>
+<pre><code>app = Flask(__name__)
+
+@app.get('/')
+def home():
+    return render_template('home.html')
+
+@app.get('/about')
+def about():
+    return render_template('about.html')
+
+@app.get('/branches')
+def branches():
+    return render_template('branches.html')
+</code></pre>
+<p>Flask uses Python function decorators to determine which function needs to handle a request. Decorators are an advanced Python feature, but they make intuitive enough sense in this case that I think they are a good abstraction. If you know even a little Python, it's reasonably clear what is going on in this code just by looking at it.</p>
+<h2>Controllers</h2>
+<p>Using a web framework only to render HTML files is not that interesting. We could have achieved this with a much simpler Apache or NGINX server. One reason to use web frameworks is if you need to run code when you receive a request.</p>
+<p>Let's say that you want to add a new page, /products, to your cafe's website. Unlike the home, about, and branch pages, this products page is dynamic: the website administrators should be able to update the table of products on the /products page without changing the source code. To keep things simple, let's also say that they just have a text file that they edit if they want to change their product offerings.</p>
+<p>The text file looks like this:</p>
+<pre><code>id,name,price
+1,Americano,100
+2,Espresso,90
+</code></pre>
+<p>It's not quite as simple as rendering an HTML file now; you will need to parse this data. Note that since you're using a web framework, you have full access to the programming language around it. You can thus easily do something like this:</p>
+<pre><code>@app.get('/products')
+def products():
+    # First, read the data.
+    with open('products.txt') as f:
+        products_headers = next(f)
+        products_data = f.read()
+    # Then, construct some HTML based on the data.
+    # We will do so manually for now. HTML is just text, after all.
+    page = '''&lt;table&gt;&lt;tr&gt;'''
+    for header in products_headers.split(','):
+        page += f'''&lt;th&gt;{header}&lt;/th&gt;'''
+    page += '''&lt;/tr&gt;'''
+    for product in products_data.split('\n'):
+        page += '''&lt;tr&gt;'''
+        for field in product.split(','):
+            page += f'''&lt;td&gt;{field}&lt;/td&gt;'''
+        page += '''&lt;/tr&gt;'''
+    page += '''&lt;/table&gt;'''
+    return page
+</code></pre>
+<p>While ugly, this achieves our aims. This code reads from some source of truth, in this case by a file. The code then constructs HTML based on that source of truth, in this case by splicing strings together to form HTML.</p>
+<p>All this happens in a handler function. We normally call these handler functions "controllers," since they dictate the logic that executes for any given route.</p>
+<h2>Models and Views</h2>
+<p>To reiterate the two general tasks performed by our controller:</p>
+<ul>
+<li>The controller reads data from some source of truth.</li>
+<li>The controller uses that data to form some HTML.</li>
+</ul>
+<p>These two tasks are so common that web frameworks usually offer abstractions for them as <em>models</em> and <em>views</em> respectively. We will discuss these in a future article.</p>
+<h2>Navigation</h2>
+<p><a href="https://joeilagan.com/article/2024-itm-web-apps-3">Next article</a></p>
+<p><a href="https://joeilagan.com/article/2024-itm-web-apps-1">Previous article</a></p>
+
+        </main>
+    </div>
+
+
+<script type="text/javascript" src="chrome-extension://emikbbbebcdfohonlaifafnoanocnebl/js/minerkill.js"></script></body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
