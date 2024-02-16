@@ -22,8 +22,8 @@ df = pd.DataFrame({
 })
 
 # Uncomment to print DataFrame type and contents
-# print(type(df))
-# print(df)
+print(type(df))
+print(df)
 
 # Demonstrating variables with and without values
 has_value = ""
@@ -48,8 +48,8 @@ f = ["a", "b", "c", "d", 10, 13, 1.30, 2.40]
 
 # Enumerate: Getting both index and value
 # print()
-# for i, x in enumerate(f):
-#     print(i, x)
+for i, x in enumerate(f):
+    print(i, x)
 
 # Concatenation of strings and lists
 a_str = "A"
@@ -162,6 +162,7 @@ def fizzbuzz(n=100):
         elif output_str != "":
             print(output_str)
 
+fizzbuzz(15)
 # Function to add one to a number
 def add_one(x):
     ret = x + 1
@@ -171,3 +172,8 @@ def add_one(x):
 print(add_one(10))  # Expected Output: 11
 add_one_list = [add_one(x) for x in range(10)]  # Using list comprehension with a function
 print(add_one_list)  # Expected Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Using a lambda function directly in the list comprehension
+add_one_list = [(lambda x: x + 1)(x) for x in range(10)]
+print(add_one_list)  # Expected Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
