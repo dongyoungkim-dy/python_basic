@@ -1,0 +1,99 @@
+---
+title: "Untitled"
+author: "Dongyoung Kim"
+date: "2024-03-01"
+output: html_document
+---
+```{r}
+data("mtcars")
+```
+```{r}
+mtcars[c("mpg", "cyl")]
+```
+```{r}
+mtcars["Mazda RX4", "mpg"]
+```
+```{r}
+mtcars["mpg"][1:4,]
+```
+```{r}
+head(mtcars)
+```
+```{r}
+head(mtcars[mtcars$cyl==6,])
+```
+```{r}
+head(mtcars[mtcars$cyl==6 & mtcars$disp>170,])
+```
+
+```{r}
+is.na(mtcars)
+
+````
+```{r}
+na.omit(mtcars)
+```
+```{r}
+library(dplyr)
+data(CO2)
+head(CO2)
+table(CO2$Type)
+```
+```{r}
+2&3
+if (2) {
+  print("Hello 2")
+}
+TRUE&FALSE
+```
+
+```{r}
+a = c(1, 2, NA, 3)
+b = c("a", "b", NA, NA)
+df <- data.frame(a,b)
+df
+```
+
+```{r}
+df[is.na(df)] = "I am not NA anymore"
+df[is.na(df$a),] = "I am not NA anymore"
+df[is.na(df$a),"a"] = "I am not NA anymore"
+df
+```
+
+```{r}
+# Sample data
+df <- data.frame(
+  name = c("Mr. Smith", "Mrs. Jones", "Mr. Brown", "Ms. Wilson", "Dr. Johnson"),
+  age = c(45, 34, 56, 28, 50)
+)
+
+df
+grepl("^Mr\\.", df$name)
+grep("^Mr\\.", df$name)
+
+```
+
+```{r}
+# Define the string
+text <- "I am (hello) a dog"
+
+# Use sub() or gsub() with a regular expression to extract "hello"
+# The pattern matches everything inside parentheses
+extracted_text <- sub(".*\\((.*?)\\).*", "\\1", text)
+
+# Print the extracted text
+print(extracted_text)
+
+```
+
+```{r}
+# Filter rows where the name starts with "Mr."
+filtered_df <- df[grepl("^Mr\\.", df$name), ]
+
+# View the filtered data
+print(filtered_df)
+
+```
+
+
